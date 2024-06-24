@@ -1,4 +1,4 @@
-# brne_py
+# brne_torch
 Authors: Muchen Sun, Katie Hughes
 
 This is a ROS 2 package containing a PyTorch implementation of Bayes Rule Nash Equilibrium.
