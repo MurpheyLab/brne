@@ -1,0 +1,87 @@
+<launch>
+
+    <arg name="zed_x_offset" default="-0.2" description="Offset from base link of robot to zed camera (m)"/>
+    <arg name="simulate" default="false" description="Simulate pedestrian/odom data. Options: true, false"/>
+    <arg name="n_peds" default="1" description="How many pedestrians to simulate (1, 2, or 3)"/>
+    <arg name="sim_moving" default="false" description="Simulate a moving pedestrian. Options: true, false"/>
+
+    <!-- Start streaming from ZED if not simulating -->
+    <include file="$(find-pkg-share pedestrian_tracking)/launch/zed.launch.xml" 
+             if="$(eval '\'$(var simulate)\' == \'false\'')">
+    </include>
+
+    <!-- convert zed object message to pedestrian type & transform frames -->
+    <node pkg="pedestrian_tracking" exec="convert_zed"
+          if="$(eval '\'$(var simulate)\' == \'false\'')">
+    </node>
+
+    <!-- Add transform between odom to brne_odom -->
+    <node pkg="tf2_ros" exec="static_transform_publisher" 
+          args="--frame-id odom
+              --child-frame-id brne_odom
+              --x $(var zed_x_offset)
+              --y 0
+              --z 0
+              --roll 0
+              --pitch 0
+              --yaw 0" >
+    </node>
+
+    <!-- Add transform from odom to base link of the robot -->
+    <node pkg="tf2_ros" exec="static_transform_publisher" 
+          args="--frame-id zed_camera_link
+              --child-frame-id base_link
+              --x $(var zed_x_offset)
+              --y 0
+              --z 0
+              --roll 0
+              --pitch 0
+              --yaw 0" 
+          if="$(eval '\'$(var simulate)\' == \'false\'')">
+    </node>
+
+    <!-- Add transform from zed cam link to brne frame (current location of robot) -->
+    <node pkg="tf2_ros" exec="static_transform_publisher" 
+          args="--frame-id zed_camera_link
+              --child-frame-id brne
+              --x $(var zed_x_offset)
+              --y 0
+              --z 0
+              --roll 0
+              --pitch 0
+              --yaw 0" 
+          if="$(eval '\'$(var simulate)\' == \'false\'')">
+    </node>
+
+    <!-- If simulating, then there is no zed cam link. So brne frame connects to brne odom -->
+    <node pkg="tf2_ros" exec="static_transform_publisher" 
+          args="--frame-id brne_odom
+              --child-frame-id brne
+              --x 0
+              --y 0
+              --z 0
+              --roll 0
+              --pitch 0
+              --yaw 0" 
+          if="$(eval '\'$(var simulate)\' == \'true\'')">
+    </node>
+
+    <!-- launch simulated pedestrian node if simulating -->
+    <node pkg="pedestrian_tracking" exec="simulate_pedestrians" 
+          if="$(eval '\'$(var simulate)\' == \'true\'')">
+      <param name="n_peds" value="$(var n_peds)"/>
+      <param name="moving" value="$(var sim_moving)"/>
+      <param from="$(find-pkg-share pedestrian_tracking)/config/sim_ped.yaml"/>
+    </node>
+
+    <!-- simulate cmd_vel to odom updates -->
+    <node pkg="pedestrian_tracking" exec="simulate_odom" 
+          if="$(eval '\'$(var simulate)\' == \'true\'')">
+        <remap from="/odom" to="/zed/zed_node/odom"/>
+    </node>
+
+    <!-- publish pedestrian markers regardless -->
+    <node pkg="pedestrian_tracking" exec="show_pedestrians">
+    </node>
+
+</launch>

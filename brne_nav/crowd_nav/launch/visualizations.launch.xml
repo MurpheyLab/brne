@@ -1,0 +1,14 @@
+<launch>
+  <arg name="show_image" default="false" description="Show the RGB image stream from the zed in RVIZ"/>
+
+  <node pkg="rviz2" exec="rviz2" args="-d $(find-pkg-share crowd_nav)/config/crowdnav.rviz" 
+        if="$(eval '\'$(var show_image)\' == \'true\'')">
+    <remap from="/odom" to="/zed/zed_node/odom"/>
+  </node>
+
+  <node pkg="rviz2" exec="rviz2" args="-d $(find-pkg-share crowd_nav)/config/crowdnav_no_image.rviz" 
+        if="$(eval '\'$(var show_image)\' == \'false\'')">
+    <remap from="/odom" to="/zed/zed_node/odom"/>
+  </node>
+
+</launch>

@@ -1,0 +1,8 @@
+<launch>
+
+    <!-- orin is about 10 cm away from center of robot -->
+    <include file="$(find-pkg-share pedestrian_tracking)/launch/perception.launch.xml">
+        <arg name="zed_x_offset" value="0.1" />
+    </include>
+
+</launch>

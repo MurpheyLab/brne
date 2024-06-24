@@ -1,0 +1,9 @@
+repositories:
+  src/brne_social_nav:
+    type: git
+    url: https://github.com/katie-hughes/brne_social_nav.git
+    version: main
+  src/zed-ros2-wrapper:
+    type: git
+    url: https://github.com/stereolabs/zed-ros2-wrapper.git
+    version: master

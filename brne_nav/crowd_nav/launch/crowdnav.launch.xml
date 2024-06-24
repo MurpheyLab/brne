@@ -1,0 +1,24 @@
+<launch>
+
+  <arg name="lang" default="C++" description="Choose whether python or C++ BRNE nodes are launched. options: PYTHON, C++"/>
+  <arg name="simulate" default="true" description="Simulate pedestrians and odometry"/>
+  <arg name="debug_level" default="info" description="Choose the debug level for the BRNE node"/>
+  <arg name="use_rviz" default="true" description="Launch rviz"/>
+  <arg name="n_peds" default="1" description="How many pedestrians to simulate (1, 2, or 3)"/>
+  <arg name="offset_unitree_vel" default="true" description="Offset for the unitree's velocity drift"/>
+
+  <!-- algorithm nodes -->
+  <include file="$(find-pkg-share crowd_nav)/launch/algorithm.launch.xml">
+      <arg name="lang" value="$(var lang)"/>
+      <arg name="debug_level" value="$(var debug_level)" />
+      <arg name="use_rviz" value="$(var use_rviz)" />
+      <arg name="offset_unitree_vel" value="$(var offset_unitree_vel)" />
+    </include>
+
+  <!-- perception nodes -->
+  <include file="$(find-pkg-share pedestrian_tracking)/launch/perception.launch.xml">
+      <arg name="simulate" value="$(var simulate)"/>
+      <arg name="n_peds" value="$(var n_peds)"/>
+  </include>
+
+</launch>

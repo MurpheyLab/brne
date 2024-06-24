@@ -1,0 +1,11 @@
+/**:
+  ros__parameters:
+    # this is if you have a moving pedestrian
+    ped_start_x: 5.0
+    ped_end_x: 0.0
+    ped_y: 0.05
+    ped_vel: -1.0
+    # this is if you have static pedestrian(s)
+    # the last ones are all the same for checking runtime, not for actually testing with
+    static_peds/x: [0.8,  2.5, 4.0,  5.5, -1.0, -1.0, -1.0]
+    static_peds/y: [0.05, -0.7, 0.7, -0.7,  0.0,  0.0,  0.0]

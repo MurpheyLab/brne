@@ -1,0 +1,75 @@
+<launch>
+
+    <!-- convert zed object message to pedestrian type & transform frames -->
+    <node pkg="pedestrian_tracking" exec="convert_zed">
+    </node>
+
+    <!-- publish pedestrian markers regardless -->
+    <node pkg="pedestrian_tracking" exec="show_pedestrians">
+    </node>
+
+    <!-- simulate cmd_vel to odom updates -->
+    <node pkg="pedestrian_tracking" exec="simulate_odom" >
+    </node>
+
+    <!-- Add transform between odom to brne_odom -->
+    <node pkg="tf2_ros" exec="static_transform_publisher" 
+          args="--frame-id odom
+              --child-frame-id brne_odom
+              --x -0.1
+              --y 0
+              --z 0
+              --roll 0
+              --pitch 0
+              --yaw 0" >
+    </node>
+
+    <!-- Add transform from odom to base link of the robot -->
+    <node pkg="tf2_ros" exec="static_transform_publisher" 
+          args="--frame-id zed_camera_link
+              --child-frame-id base_link
+              --x -0.1
+              --y 0
+              --z 0
+              --roll 0
+              --pitch 0
+              --yaw 0" >
+    </node>
+
+    <!-- Add transform from zed cam link to brne frame (current location of robot) -->
+    <node pkg="tf2_ros" exec="static_transform_publisher" 
+          args="--frame-id zed_camera_link
+              --child-frame-id brne
+              --x -0.1
+              --y 0
+              --z 0
+              --roll 0
+              --pitch 0
+              --yaw 0" >
+    </node>
+
+    <!-- fake the zed transform -->
+    <node pkg="tf2_ros" exec="static_transform_publisher" 
+          args="--frame-id zed_camera_link
+              --child-frame-id zed_left_camera_frame
+              --x 0
+              --y 0
+              --z 0
+              --roll 0
+              --pitch 0
+              --yaw 0" >
+    </node>
+
+    <!-- fake odom to zed transform -->
+    <node pkg="tf2_ros" exec="static_transform_publisher" 
+          args="--frame-id odom
+              --child-frame-id zed_camera_link
+              --x -0.1
+              --y 0
+              --z 0
+              --roll 0
+              --pitch 0
+              --yaw 0" >
+    </node>
+
+</launch>

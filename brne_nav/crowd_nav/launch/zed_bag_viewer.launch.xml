@@ -1,0 +1,4 @@
+<launch>
+  <node pkg="rviz2" exec="rviz2" args="-d $(find-pkg-share crowd_nav)/config/zed_bag_viewer.rviz">
+  </node>
+</launch>

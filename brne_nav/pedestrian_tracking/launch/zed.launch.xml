@@ -1,0 +1,11 @@
+<launch>
+
+    <!-- Launch ZED wrapper -->
+    <include file="$(find-pkg-share zed_wrapper)/launch/zed_camera.launch.py">
+      <arg name="camera_model" value="zed2i" />
+      <arg name="publish_tf" value="true" />
+      <arg name="base_frame" value="zed_link" />
+      <arg name="config_path" value="$(find-pkg-share pedestrian_tracking)/config/zed_config.yaml"/>
+    </include>
+
+</launch>

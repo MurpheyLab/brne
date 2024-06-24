@@ -1,0 +1,19 @@
+<launch>
+
+  <arg name="lang" default="C++" description="Choose whether python or C++ BRNE nodes are launched. options: PYTHON, C++"/>
+  <arg name="debug_level" default="info" description="Choose the debug level for the BRNE node"/>
+  <arg name="n_peds" default="1" description="How many pedestrians to simulate (1, 2, or 3)"/>
+  <arg name="sim_moving" default="false" description="Simulate a moving pedestrian. Options: true, false"/>
+
+
+  <include file="$(find-pkg-share crowd_nav)/launch/crowdnav.launch.xml">
+      <arg name="simulate" value="true"/>
+      <arg name="lang" value="$(var lang)"/>
+      <arg name="debug_level" value="$(var debug_level)"/>
+      <arg name="use_rviz" value="true"/>
+      <arg name="n_peds" value="$(var n_peds)"/>
+      <arg name="sim_moving" value="$(var sim_moving)"/>
+      <arg name="offset_unitree_vel" value="false"/>
+    </include>
+
+</launch>
