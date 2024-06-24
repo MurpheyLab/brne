@@ -1,7 +1,12 @@
 # BRNE Social Navigation
-Author: Katie Hughes, Muchen Sun
 
 This set of ROS 2 packages implements Bayes Rule Nash Equilibrium (BRNE) crowd navigation as well as pedestrian tracking and odometry updates using a ZED2i camera. It can be deployed on a Unitree Go1 quadruped, but nothing about this package is specific to this robot. A seperate repo was originally maintained under [https://github.com/katie-hughes/brne_social_nav](https://github.com/katie-hughes/brne_social_nav).
+
+Code authors:
+
+- [Katie Hughes](https://katie-hughes.github.io/) developed the ROS infrastructure and a C++ implementation of the ROS-integrated BRNE algorithm.  
+- [Muchen Sun](https://muchen-sun.com/) implemented the ROS-integrated algorithm in Python (Numba) and PyTorch (deployed on an Nvidia Jetson AGX Orin).
+
 
 ## Clone Packages
 To set up the necessary packages:

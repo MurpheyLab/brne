@@ -8,11 +8,6 @@ A journal manuscript is currently under review, an arXiv preprint can be found [
 
 Video demonstrations of the algorithm deployed on an Unitree Go1 quadruped can be found at the [project website](https://sites.google.com/view/brne-crowdnav) and Katie's [portfolio post](https://katie-hughes.github.io/crowdnav/). You can also find more details on the project from our invited presentation at [NVIDIA GTC 2024](https://www.nvidia.com/en-us/on-demand/session/gtc24-se63278/).
 
-Code authors:
-
-- [Muchen Sun](https://muchen-sun.com/) proposed the algorithm and implemented the core algorithm in Python (Numba) and PyTorch (deployed on an Nvidia Jetson AGX Orin).
-- [Katie Hughes](https://katie-hughes.github.io/) developed the ROS social navigation framework (specified for the Unitree Go1 quadruped robot) and a C++ implementation of the core BRNE algorithm.  
-
 To cite this work:
 
 ```

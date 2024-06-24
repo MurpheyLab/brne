@@ -1,5 +1,7 @@
 # BRNE tutorials
 
+Author: Muchen Sun
+
 All tutorials are written as jupyter notebooks, you can run each tutorial in your web browser through Google Colaboratory (links below).
 
 - [Tutorial 1](brne_2d_example.ipynb): Illustrating the princple of BRNE in a simple 2D example. [[Google Colab]](https://colab.research.google.com/github/MurpheyLab/brne/blob/main/tutorials/brne_2d_example.ipynb)
