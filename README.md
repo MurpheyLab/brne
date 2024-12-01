@@ -1,15 +1,10 @@
 # BRNE: Bayesian Recursive Nash Equilibrium for Social Navigation
 
-![](media/brne_atrium_test.gif)
-
-<!DOCTYPE html>
-<html>
-<body>
-    <video controls width="800">
-        <source src="media/brne_atrium_test.mp4" type="video/mp4">
-    </video>
-</body>
-</html>
+<div style="text-align: center;">
+  <video width="800" autoplay loop controls>
+    <source src="https://github.com/MurpheyLab/brne/raw/refs/heads/main/media/brne_atrium_test.mp4" type="video/mp4">
+  </video>
+</div>
 
 This repository contains relevant code for BRNE (Bayesian Recursive Nash Equilibrum), an algorithm that computes mixed strategy Nash equilibrium for real-time human-aware navigation in dense crowds. It contains PyTorch-based tutorial, a fully ROS integrated social navigation framework powered by BRNE, implemented in both PyTorch and C++, as well as implementations for simulated benchmark studies. 
 
