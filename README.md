@@ -2,6 +2,8 @@
 
 ![](media/brne_atrium_test.gif)
 
+![](media/brne_bench.gif)
+
 This repository contains relevant code for BRNE (Bayesian Recursive Nash Equilibrum), an algorithm that computes mixed strategy Nash equilibrium for real-time human-aware navigation in dense crowds. It contains PyTorch-based tutorial, a fully ROS integrated social navigation framework powered by BRNE, implemented in both PyTorch and C++, as well as implementations for simulated benchmark studies. 
 
 Video demonstrations of the algorithm deployed on an Unitree Go1 quadruped can be found at the [project website](https://sites.google.com/view/brne-crowdnav) and Katie's [portfolio post](https://katie-hughes.github.io/crowdnav/). You can also find more details on the project from our invited presentation at [NVIDIA GTC 2024](https://www.nvidia.com/en-us/on-demand/session/gtc24-se63278/).
