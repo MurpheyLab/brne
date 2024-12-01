@@ -1,6 +1,6 @@
 # BRNE tutorials
 
-Author: Muchen Sun
+Author: Max Muchen Sun
 
 All tutorials are written as jupyter notebooks, you can run each tutorial in your web browser through Google Colaboratory (links below).
 
